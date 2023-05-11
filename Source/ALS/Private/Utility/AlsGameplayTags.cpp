@@ -10,6 +10,7 @@ namespace AlsLocomotionModeTags
 {
 	UE_DEFINE_GAMEPLAY_TAG(Grounded, TEXT("Als.LocomotionMode.Grounded"))
 	UE_DEFINE_GAMEPLAY_TAG(InAir, TEXT("Als.LocomotionMode.InAir"))
+	UE_DEFINE_GAMEPLAY_TAG(Swimming, TEXT("Als.LocomotionMode.Swimming"))
 }
 
 namespace AlsRotationModeTags
