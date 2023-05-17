@@ -379,6 +379,7 @@ public:
 
 private:
 	void RefreshGroundedRotation(float DeltaTime);
+	void RefreshSwimmingRotation(float DeltaTime);
 
 protected:
 	virtual bool RefreshCustomGroundedMovingRotation(float DeltaTime);
