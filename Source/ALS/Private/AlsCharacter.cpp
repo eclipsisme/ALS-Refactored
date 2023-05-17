@@ -1395,8 +1395,7 @@ void AAlsCharacter::RefreshGroundedRotation(const float DeltaTime)
 
 void AAlsCharacter::RefreshSwimmingRotation(float DeltaTime)
 {
-    if (LocomotionState.bRotationLocked || LocomotionAction.IsValid() ||
-        LocomotionMode != AlsLocomotionModeTags::Swimming)
+    if (LocomotionAction.IsValid() || LocomotionMode != AlsLocomotionModeTags::Swimming)
     {
         return;
     }
@@ -1445,13 +1444,13 @@ void AAlsCharacter::RefreshSwimmingRotation(float DeltaTime)
         return;
     }
 
-    if (RotationMode == AlsRotationModeTags::LookingDirection)
+    if (RotationMode == AlsRotationModeTags::ViewDirection)
     {
         const auto TargetYawAngle{
             Gait == AlsGaitTags::Sprinting
                 ? LocomotionState.VelocityYawAngle
                 : UE_REAL_TO_FLOAT(ViewState.Rotation.Yaw) +
-                  GetMesh()->GetAnimInstance()->GetCurveValue(UAlsConstants::RotationYawOffsetCurve())
+                  GetMesh()->GetAnimInstance()->GetCurveValue(UAlsConstants::RotationYawOffsetCurveName())
         };
 
         static constexpr auto TargetYawAngleRotationSpeed{ 500.0f };
