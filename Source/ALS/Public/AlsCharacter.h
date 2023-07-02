@@ -159,9 +159,10 @@ public:
 public:
 	const FGameplayTag& GetLocomotionMode() const;
 
-private:
+protected:
 	void SetLocomotionMode(const FGameplayTag& NewLocomotionMode);
 
+private:
 	void NotifyLocomotionModeChanged(const FGameplayTag& PreviousLocomotionMode);
 
 protected:
@@ -204,10 +205,9 @@ private:
 public:
 	const FGameplayTag& GetRotationMode() const;
 
-private:
+protected:
 	void SetRotationMode(const FGameplayTag& NewRotationMode);
 
-protected:
 	UFUNCTION(BlueprintNativeEvent, Category = "Als Character")
 	void OnRotationModeChanged(const FGameplayTag& PreviousRotationMode);
 
@@ -240,10 +240,9 @@ public:
 public:
 	const FGameplayTag& GetStance() const;
 
-private:
+protected:
 	void SetStance(const FGameplayTag& NewStance);
 
-protected:
 	UFUNCTION(BlueprintNativeEvent, Category = "Als Character")
 	void OnStanceChanged(const FGameplayTag& PreviousStance);
 
@@ -264,10 +263,9 @@ private:
 public:
 	const FGameplayTag& GetGait() const;
 
-private:
+protected:
 	void SetGait(const FGameplayTag& NewGait);
 
-protected:
 	UFUNCTION(BlueprintNativeEvent, Category = "Als Character")
 	void OnGaitChanged(const FGameplayTag& PreviousGait);
 
@@ -306,11 +304,22 @@ public:
 
 	void SetLocomotionAction(const FGameplayTag& NewLocomotionAction);
 
+private:
 	void NotifyLocomotionActionChanged(const FGameplayTag& PreviousLocomotionAction);
 
 protected:
 	UFUNCTION(BlueprintNativeEvent, Category = "Als Character")
 	void OnLocomotionActionChanged(const FGameplayTag& PreviousLocomotionAction);
+
+	// Input
+
+public:
+	const FVector& GetInputDirection() const;
+
+protected:
+	void SetInputDirection(FVector NewInputDirection);
+
+	virtual void RefreshInput(float DeltaTime);
 
 	// View
 
@@ -340,13 +349,9 @@ private:
 	// Locomotion
 
 public:
-	const FVector& GetInputDirection() const;
-
 	const FAlsLocomotionState& GetLocomotionState() const;
 
 private:
-	void SetInputDirection(FVector NewInputDirection);
-
 	void SetDesiredVelocityYawAngle(float NewDesiredVelocityYawAngle);
 
 	void RefreshLocomotionLocationAndRotation();
