@@ -397,9 +397,13 @@ protected:
 	float CalculateRotationInterpolationSpeed() const;
 
 private:
-	void ApplyRotationYawSpeed(float DeltaTime);
 
 	void RefreshInAirRotation(float DeltaTime);
+
+protected:
+	void ApplyRotationYawSpeed(float DeltaTime);
+
+	virtual void RefreshCustomRotation(float DeltaTime) { };
 
 protected:
 	virtual bool RefreshCustomInAirRotation(float DeltaTime);
@@ -454,11 +458,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "ALS|Als Character", Meta = (ReturnDisplayName = "Success"))
 	bool TryStartMantlingGrounded();
 
-private:
+protected:
 	bool TryStartMantlingInAir();
 
 	bool TryStartMantling(const FAlsMantlingTraceSettings& TraceSettings);
-
+private:
 	UFUNCTION(Server, Reliable)
 	void ServerStartMantling(const FAlsMantlingParameters& Parameters);
 
