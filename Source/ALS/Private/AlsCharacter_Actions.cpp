@@ -785,8 +785,9 @@ void AAlsCharacter::RefreshRagdollingActorTransform(const float DeltaTime)
 }
 
 bool AAlsCharacter::IsRagdollingAllowedToStop() const
-{
-	return LocomotionAction == AlsLocomotionActionTags::Ragdolling;
+{	
+	return LocomotionAction == AlsLocomotionActionTags::Ragdolling
+		&& RagdollingState.RootBoneVelocity.Length() < 100.0f;
 }
 
 bool AAlsCharacter::TryStopRagdolling()
