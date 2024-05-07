@@ -8,6 +8,7 @@
 #include "Utility/AlsCameraConstants.h"
 #include "Utility/AlsMacros.h"
 #include "Utility/AlsUtility.h"
+#include "Engine/OverlapResult.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(AlsCameraComponent)
 
